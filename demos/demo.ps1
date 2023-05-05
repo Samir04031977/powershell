@@ -66,3 +66,62 @@ $prenom.Length
 $prenom.ToUpper()
 
 Get-Process | Get-Member
+
+# Pipeline
+
+Get-Command | Out-File .\demos\commands.txt
+
+Get-Content .\demos\commands.txt | Sort-Object
+
+Get-Content .\demos\commands.txt
+
+cat .\demos\commands.txt
+
+Out-File -?
+
+# Manipulation de résultats
+
+# Récupère les processus dont le CPU est > 200
+Get-Process | Where-Object -Property CPU -gt 200
+# Syntaxe avec un alias
+Get-Process | ? -Property ProcessName -eq Code
+
+# Permet de sélectionner les colonnes à afficher
+Get-Service | Select-Object Name
+
+Get-Service | Select-Object Name, Status | Sort-Object -Property Name
+
+help Select-Object -Examples
+
+# $_ ou $PSItem : Variable automatique qui contient l’objet actuel dans l’objet pipeline
+Get-Command | ForEach-Object { $_.Name.ToUpper() }
+Get-Command | ForEach-Object { $PSItem.Name.ToUpper() }
+Get-Command | % { $_.Name.ToUpper() }
+
+Get-Command | Get-Member
+
+Get-Command | select -last 1
+
+Get-Service | Group-Object -Property Status
+Get-Service | group -Property Status
+
+# Récupère les alias d'une cmdlet
+Get-Alias -Definition Group-Object
+
+# Récupère la commande d'un alias
+Get-Alias pwd
+
+Get-Alias -Definition Get-Command
+
+# Format d'affichage
+
+Get-Command -Verb Format
+
+Get-Command | Where-Object -Property Name -Like *Process* | Format-List
+Get-Command | Where-Object -Property Name -Like *Process* | Format-Table
+Get-Command | Where-Object -Property Name -Like *Process* | Format-Wide
+
+Get-Disk | Select-Object  Model, Size | Format-List
+
+# Création d'un Alias
+New-Alias -Name ww -Value Write-Warning
