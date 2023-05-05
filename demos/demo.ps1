@@ -125,3 +125,37 @@ Get-Disk | Select-Object  Model, Size | Format-List
 
 # Création d'un Alias
 New-Alias -Name ww -Value Write-Warning
+
+# Providers
+Get-PSProvider
+
+Get-PSDrive
+
+# Variable Automatiques
+$PSVersionTable | Get-Member
+$PSVersionTable.GetType()
+
+# Chemin d'accès du répertoire de l'utilisateur courant
+$HOME
+
+$PROFILE
+
+$HOME > .\demos\home.txt
+$Profile > .\demos\home.txt
+
+# Redirection du flux d'erreur dans la réussite
+Get-ChildItem 'C:\', 'fakepath' 2>&1 > .\demos\dir.log
+Get-ChildItem 'C:\', 'fakepath' > .\demos\dir.log
+
+cat .\demos\dir.log
+
+# Simuler une action
+New-Item -Path .\demos\test.xyz -WhatIf
+
+# Confirmation avant exécution
+Remove-Item -Path .\demos\home.txt -Confirm
+
+<###############
+SCRIPTS
+################>
+

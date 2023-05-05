@@ -1,0 +1,19 @@
+
+    Directory: C:\
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          14/11/2022    12:20                adb
+da---          17/11/2022    09:56                Android
+d----          13/06/2022    14:02                Dell
+d----          18/09/2022    13:55                gcc
+d----          29/04/2023    00:20                Intel
+d----          16/09/2022    15:23                MinGW
+d----          07/12/2019    10:14                PerfLogs
+d-r--          14/04/2023    09:18                Program Files
+d-r--          24/04/2023    11:24                Program Files (x86)
+d----          13/06/2022    14:08                ProgramFilesFolder
+d----          27/12/2022    15:06                SQL2019
+d-r--          13/06/2022    13:49                Users
+d----          04/05/2023    15:54                Windows
+
