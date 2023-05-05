@@ -159,3 +159,92 @@ Remove-Item -Path .\demos\home.txt -Confirm
 SCRIPTS
 ################>
 
+Get-ExecutionPolicy
+
+#region MaRegion
+
+Write-Host "Hello"
+Write-Host "ça va ?"
+
+#endregion
+
+# Execution du script uniquement si les prérequis sont remplis
+#Requires -Version 7.0
+
+# Variables
+
+$chien = "Rex"
+
+$age = 30
+
+$argent = 12.5
+
+[int]$pieds = 2
+[string]$surnom = "dupont"
+[double]$money = 12.5
+[char]$titre = "M"
+
+# Exception levée, convertion de type impossible
+$pieds = "toto"
+
+# Création d'une constante
+New-Variable -Name "REPERTOIRE" -Value "C:\Users\PC\Documents\session_formation\20230504_M2I\demos" -Option Constant
+
+$REPERTOIRE
+
+# Concaténation de chaînes
+
+$message = "Bonjour, " + $surnom
+$message
+
+$message = "Au revoir $surnom"
+
+# La chaîne n'est pas interprétée
+$message = 'Au revoir $surnom'
+
+$directory = Get-Item .\demos
+
+# $() permet d'exécuter des méthodes
+$message = "Date création: $($directory.CreationTime)"
+
+<#########################
+STRUCTURES CONDITIONNELLES
+##########################>
+
+if ($surnom.Length -gt 5 -and $surnom -notin "toto", "benard") {
+    Write-Host "Votre surnom: $surnom est long"
+}
+
+if ($surnom.Length -gt 5) {
+    Write-Host "Votre surnom: $surnom est long"
+}
+else {
+    Write-Host "Votre surnom: $surnom est court"
+}
+
+if ( Test-Path -Path "C:\Users\PC\Documents\session_formation\20230504_M2I\demos" -PathType Leaf ) {
+    Write-Host "Le chemin existe"
+}
+elseif ( Test-Path -Path "C:\Users\PC\Documents\session_formation\20230504_M2I\demos" ) {
+    Write-Warning "A file was required but a directory was found instead."
+}
+else {
+    Write-Host "Rien"
+}
+
+switch ($surnom) {
+    'toto' {
+        Write-Host "Bonjour $surnom"
+    }
+
+    'dupont' {
+        Write-Debug "Bonjour $surnom"
+    }
+
+    'jean' {
+        Write-Error "Bonjour $surname"
+    }
+    default {
+        Write-Host "RIEN"
+    }
+}
