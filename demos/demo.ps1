@@ -47,3 +47,22 @@ Get-Command -Noun Item*
 # Filtre par rapport au nom complet de la commande
 Get-Command -Name *e-i*
 
+# Liste les verbes de PowerShell
+Get-Verb
+
+help Get-Member -Examples
+
+Get-Service | Get-Member
+
+$prenom = "Arthur"
+
+# Affiche les membres du type String
+$prenom | Get-Member
+
+# Utilisation d'un propriété
+$prenom.Length
+
+# Utilisation d'une méthode
+$prenom.ToUpper()
+
+Get-Process | Get-Member
